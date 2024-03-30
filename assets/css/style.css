@@ -1,0 +1,21 @@
+#tabla {
+    text-wrap: wrap;
+    word-break:break-all;
+}
+
+p {
+    margin: 0;
+}
+
+.w-85 {
+    width: 85%;
+}
+
+#checks {
+    padding-top: 24px;
+
+}
+
+.borrar {
+    cursor: pointer;
+}
