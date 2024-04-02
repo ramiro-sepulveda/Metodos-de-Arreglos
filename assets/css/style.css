@@ -1,6 +1,6 @@
-#tabla {
+tr {
     text-wrap: wrap;
-    word-break:break-all;
+    /* word-break:break-all; */
 }
 
 p {
