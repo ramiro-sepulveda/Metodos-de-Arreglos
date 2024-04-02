@@ -3,6 +3,14 @@ tr {
     /* word-break:break-all; */
 }
 
+table {
+    text-align: center;
+}
+
+table .btn {
+    font-size: 0.8rem;
+}
+
 p {
     margin: 0;
 }

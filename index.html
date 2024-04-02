@@ -30,19 +30,22 @@
           <p>Realizadas: <b id="realizadas">0</b></p>
         </div>
 
-        <table id="tabla" class="table table-sm table-striped col-8">
+        <table class="table table-sm table-striped">
           <thead>
-            <th style="max-width: 10%;">ID</th>
-            <th style="width: 70%;">Tarea</th>
-            <td style="max-width: 10%;"></td>
-            <td style="max-width: 10%;"></td>
+            <th style="width: 5%">ID</th>
+            <th style="text-align: start;">Tarea</th>
+            <td style="width: 90px;">
+              <button type="button" id="todo-check" class="btn btn-success p-1">
+                Marcar Todo
+              </button>
+            </td>
+            <td style="width: 90px;">
+              <button type="button" id="todo-borrar" class="btn btn-danger p-1">
+                Borrar Todo
+              </button>
+            </td>
           </thead>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          <tbody id="tabla"></tbody>
         </table>
       </section>
     </div>

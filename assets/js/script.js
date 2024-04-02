@@ -1,34 +1,31 @@
 const tareas = [
-  { id: 1, nombre: "Crear repositorio Github", check: "" },
-  { id: 2, nombre: "Realizar Primer Commit", check: "" },
-  { id: 3, nombre: "Revisar pagina en busca de BUGS", check: "" },
+  { id: 1, nombre: "Crear repositorio Github", check: "checked" },
+  { id: 2, nombre: "Realizar Primer Commit", check: "checked" },
+  { id: 3, nombre: "Revisar pagina en busca de BUGS", check: "checked" },
 ];
+
+let check = tareas.filter((ele) => ele.check == "checked");
 
 const btnAgregar = document.getElementById("agregar-tarea");
 const cantTotal = document.getElementById("total");
 const cantRealizadas = document.getElementById("realizadas");
 const tablaTareas = document.getElementById("tabla");
+const marcarTodo = document.getElementById("todo-check");
+const borrarTodo = document.getElementById("todo-borrar");
 
 let valorId = 4;
 let html = "";
 
 function renderTareas() {
-  const check = tareas.filter((ele) => ele.check == "checked");
+  check = tareas.filter((ele) => ele.check == "checked");
   cantTotal.innerHTML = tareas.length;
   cantRealizadas.innerHTML = check.length;
-
-  html = `  <thead>
-                <th style="max-width: 10%;">ID</th>
-                <th style="width: 70%;">Tarea</th>
-                <td style="max-width: 10%;"></td>
-                <td style="max-width: 10%;"></td>
-            </thead>`;
 
   for (let tarea of tareas) {
     html += `<tr>
                 <td>${tarea.id}</td>
 
-                <td>${tarea.nombre}</td>
+                <td style="text-align: start">${tarea.nombre}</td>
 
                 <td><input type="checkbox" ${tarea.check} class="check-realizado" id="check${tarea.id}" onclick="
                 if (document.getElementById('check${tarea.id}').checked) {
@@ -57,8 +54,28 @@ renderTareas();
 
 btnAgregar.addEventListener("click", () => {
   let inputTarea = document.getElementById("input-tarea").value;
-  tareas.push({ id: valorId, nombre: inputTarea, check: "" });
-  inputTarea = "";
-  valorId += 1;
+  if (inputTarea == "") {
+    alert("Favor ingresar Tarea");
+  } else {
+    tareas.push({ id: valorId, nombre: inputTarea, check: "" });
+    inputTarea = "";
+    valorId += 1;
+  }
+  renderTareas();
+});
+
+marcarTodo.addEventListener("click", () => {
+  tareas.forEach((tarea) => {
+    if (tareas.length == check.length) {
+      tarea.check = "";
+    } else {
+      tarea.check = "checked";
+    }
+  });
+  renderTareas();
+});
+
+borrarTodo.addEventListener("click", () => {
+  tareas.length = 0;
   renderTareas();
 });
